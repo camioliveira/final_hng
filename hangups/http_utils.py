@@ -33,7 +33,8 @@ class Session(object):
         self._proxy = proxy
         timeout = aiohttp.ClientTimeout(connect=CONNECT_TIMEOUT)
         self._session = aiohttp.ClientSession(cookies=cookies,
-                                              timeout=timeout)
+                                              timeout=timeout,
+                                              trust_env=True)
         sapisid = cookies['SAPISID']
         self._authorization_headers = _get_authorization_headers(sapisid)
 
